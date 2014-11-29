@@ -1,9 +1,10 @@
 angular.module('customersApp')
   .controller('CustomersController', [
     '$scope',
+    '$log',
     'customersService',
     'appSettings',
-    function ($scope, customersService, appSettings) {
+    function ($scope, $log, customersService, appSettings) {
       $scope.sortBy  = 'name';
       $scope.reverse = false;
       $scope.appSettings = appSettings;
@@ -15,7 +16,7 @@ angular.module('customersApp')
             $scope.customers = customers;
           })
           .error(function (data, status, headers, config) {
-            // TODO: handle error
+            $log.log(data.error + ' ' + status);
           });
       };
 

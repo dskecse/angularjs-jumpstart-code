@@ -1,9 +1,10 @@
 angular.module('customersApp')
   .controller('OrdersController', [
     '$scope',
+    '$log',
     '$routeParams',
     'customersFactory',
-    function ($scope, $routeParams, customersFactory) {
+    function ($scope, $log, $routeParams, customersFactory) {
       $scope.customer = null;
 
       function init() {
@@ -12,7 +13,7 @@ angular.module('customersApp')
             $scope.customer = customer;
           })
           .error(function (data, status, headers, config) {
-            // TODO: handle error
+            $log.log(data.error + ' ' + status);
           });
       }
 
