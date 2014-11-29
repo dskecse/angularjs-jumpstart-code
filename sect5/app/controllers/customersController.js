@@ -2,9 +2,11 @@ angular.module('customersApp')
   .controller('CustomersController', [
     '$scope',
     'customersService',
-    function ($scope, customersService) {
+    'appSettings',
+    function ($scope, customersService, appSettings) {
       $scope.sortBy  = 'name';
       $scope.reverse = false;
+      $scope.appSettings = appSettings;
       $scope.customers = [];
 
       function init() {
