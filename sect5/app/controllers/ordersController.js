@@ -7,7 +7,13 @@ angular.module('customersApp')
       $scope.customer = null;
 
       function init() {
-        $scope.customer = customersFactory.getCustomer($routeParams.customerId);
+        customersFactory.getCustomer($routeParams.customerId)
+          .success(function (customer) {
+            $scope.customer = customer;
+          })
+          .error(function (data, status, headers, config) {
+            // TODO: handle error
+          });
       }
 
       init();
