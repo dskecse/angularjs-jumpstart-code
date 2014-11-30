@@ -7,6 +7,7 @@
     <th ng-click="doSort('city')">City</th>
     <th ng-click="doSort('orderTotal')">Order Total</th>
     <th ng-click="doSort('joined')">Joined</th>
+    <th>Orders</th>
     <th>&nbsp;</th>
   </tr>
   <tr ng-repeat="customer in customers | filter: customerFilter | orderBy: sortBy:reverse" ng-cloak>
@@ -15,6 +16,9 @@
     <td>{{ customer.orderTotal | currency }}</td>
     <td>{{ customer.joined | date }}</td>
     <td><a href="#/orders/{{ customer.id }}">View Orders</a></td>
+    <td>
+      <span class="delete" ng-click="deleteCustomer(customer.id)">x</span>
+    </td>
   </tr>
 </table>
 

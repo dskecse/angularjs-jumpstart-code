@@ -3,3 +3,8 @@
 .ng-hide:not(.ng-hide-animate) {
   display: none !important;
 }
+
+.delete {
+  color:  red;
+  cursor: pointer;
+}

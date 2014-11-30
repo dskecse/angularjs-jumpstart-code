@@ -25,6 +25,24 @@ angular.module('customersApp')
       $scope.doSort = function (propName) {
         $scope.sortBy = propName;
         $scope.reverse = !$scope.reverse;
-      }
+      };
+
+      $scope.deleteCustomer = function (customerId) {
+        customersService.deleteCustomer(customerId)
+          .success(function (status) {
+            if (status) {
+              $scope.customers.forEach(function (customer, i) {
+                if (customer.id === customerId) {
+                  $scope.customers.splice(i, 1);
+                }
+              });
+            } else {
+              $window.alert('Unable to delete a customer');
+            }
+          })
+          .error(function (data, status, headers, config) {
+            $log.log(data.error + ' ' + status);
+          });
+      };
     }
   ]);

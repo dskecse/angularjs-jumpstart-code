@@ -4,8 +4,8 @@ var express = require('express'),
 app.use(express.static(__dirname, '/'));
 
 app.get('/customers/:id', function (request, response) {
-  var customerId = parseInt(request.params.id);
-  var data = {};
+  var customerId = parseInt(request.params.id),
+      data = {};
 
   customers.forEach(function (customer) {
     if (customer.id === customerId) {
@@ -18,6 +18,20 @@ app.get('/customers/:id', function (request, response) {
 
 app.get('/customers', function (request, response) {
   response.json(customers);
+});
+
+app.delete('/customers/:id', function (request, response) {
+  var customerId = parseInt(request.params.id),
+      data = {};
+
+  customers.forEach(function (customer, id) {
+    if (customer.id === customerId) {
+      customers.splice(id, 1);
+      data = { status: true };
+    }
+  });
+
+  response.json(data);
 });
 
 app.get('/orders', function (request, response) {

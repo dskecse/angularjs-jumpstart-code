@@ -9,5 +9,9 @@ angular.module('customersApp')
       this.getCustomer = function (customerId) {
         return $http.get('/customers/' + customerId);
       };
+
+      this.deleteCustomer = function (customerId) {
+        return $http.delete('/customers/' + customerId);
+      };
     }
   ]);
