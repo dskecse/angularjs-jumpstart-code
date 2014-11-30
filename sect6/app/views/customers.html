@@ -1,7 +1,7 @@
 <h2>{{ appSettings.title }}</h2>
 <p>Filter: <input type="text" ng-model="customerFilter.name"></p>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th ng-click="doSort('name')">Name</th>
     <th ng-click="doSort('city')">City</th>
@@ -17,7 +17,7 @@
     <td>{{ customer.joined | date }}</td>
     <td><a href="#/orders/{{ customer.id }}">View Orders</a></td>
     <td>
-      <span class="delete" ng-click="deleteCustomer(customer.id)">x</span>
+      <span class="glyphicon glyphicon-remove delete" ng-click="deleteCustomer(customer.id)"></span>
     </td>
   </tr>
 </table>
